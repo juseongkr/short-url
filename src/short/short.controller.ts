@@ -1,4 +1,6 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Logger } from '@nestjs/common';
 
 @Controller('short')
-export class ShortController {}
+export class ShortController {
+  private logger = new Logger('ShortController');
+}
