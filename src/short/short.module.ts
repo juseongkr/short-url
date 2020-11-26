@@ -6,10 +6,7 @@ import { ShortRepository } from './short.repository';
 import { ShortService } from './short.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([ShortRepository]),
-    AuthModule,
-  ],
+  imports: [TypeOrmModule.forFeature([ShortRepository]), AuthModule],
   controllers: [ShortController],
   providers: [ShortService],
 })
