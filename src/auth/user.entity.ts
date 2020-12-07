@@ -1,11 +1,14 @@
-import { Short } from 'src/short/short.entity';
+import { Short } from 'src/shorts/short.entity';
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
   Unique,
+  UpdateDateColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 
@@ -30,6 +33,15 @@ export class User extends BaseEntity {
     { eager: true },
   )
   shorts: Short[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 
   async validatePassword(password: string): Promise<boolean> {
     return (await bcrypt.hash(password, this.salt)) === this.password;
